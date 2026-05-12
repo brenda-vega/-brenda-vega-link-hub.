@@ -101,7 +101,13 @@ function PortfolioList() {
       <SectionHeading id="portfolio-heading" number="03" title="Portafolios" meta="3 / 3" editorial />
       <div className="portfolio-list">
         {portfolioLinks.map((link) => (
-          <a className="portfolio-row" href={link.href} aria-label={link.ariaLabel} key={link.label}>
+          <a
+            id={link.href.slice(1)}
+            className="portfolio-row"
+            href={link.href}
+            aria-label={link.ariaLabel}
+            key={link.label}
+          >
             <span className="row-number">{link.number}</span>
             <span className="row-title">{link.label}</span>
             <span className="row-year">2026</span>
@@ -121,7 +127,13 @@ function Credentials() {
       <SectionHeading id="credentials-heading" number="04" title="Credentials" meta="3 PDFs" editorial />
       <div className="credential-list">
         {credentialLinks.map((link) => (
-          <a className="credential-row" href={link.href} aria-label={link.ariaLabel} key={link.label}>
+          <a
+            id={link.href.slice(1)}
+            className="credential-row"
+            href={link.href}
+            aria-label={link.ariaLabel}
+            key={link.label}
+          >
             <span>
               <strong>{link.label}</strong>
               <small>{link.detail}</small>
@@ -142,11 +154,16 @@ function Contact() {
     <section className="contact-section" aria-labelledby="contact-heading">
       <SectionHeading id="contact-heading" number="05" title="Get in touch" editorial />
       <div className="contact-list">
-        <a className="contact-pill primary-contact" href="#whatsapp" aria-label="Contact Brenda Vega on WhatsApp">
+        <a
+          id="whatsapp"
+          className="contact-pill primary-contact"
+          href="#whatsapp"
+          aria-label="Contact Brenda Vega on WhatsApp"
+        >
           <WhatsAppIcon />
           WhatsApp
         </a>
-        <a className="contact-pill" href="#linkedin" aria-label="Open Brenda Vega LinkedIn profile">
+        <a id="linkedin" className="contact-pill" href="#linkedin" aria-label="Open Brenda Vega LinkedIn profile">
           LinkedIn
         </a>
       </div>

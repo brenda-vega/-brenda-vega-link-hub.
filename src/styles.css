@@ -15,6 +15,9 @@
   --border-strong: rgba(45, 45, 45, 0.18);
   --inverse: #151819;
   --inverse-text: #e3e5e4;
+  --btn-hover-bg: #444444;
+  --btn-hover-border: rgba(45, 45, 45, 0.35);
+  --ghost-hover: rgba(255, 255, 255, 0.72);
   --shadow: 0 22px 60px rgba(24, 28, 30, 0.04);
   background: var(--bg);
   color: var(--text);
@@ -40,6 +43,9 @@
   --border-strong: rgba(255, 255, 255, 0.13);
   --inverse: #f2f4f4;
   --inverse-text: #151819;
+  --btn-hover-bg: #d6d4d1;
+  --btn-hover-border: rgba(255, 255, 255, 0.22);
+  --ghost-hover: #202221;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }
 
@@ -50,6 +56,7 @@
 html {
   min-height: 100%;
   background: var(--bg);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -58,6 +65,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  transition: background-color 220ms ease, color 220ms ease;
 }
 
 body,
@@ -137,6 +145,14 @@ button:focus-visible {
 
 .top-link {
   color: var(--text);
+  text-underline-offset: 4px;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.top-link:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
 }
 
 .theme-toggle {
@@ -148,6 +164,11 @@ button:focus-visible {
   border: 0;
   background: transparent;
   cursor: pointer;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent-strong);
 }
 
 .theme-icon {
@@ -158,6 +179,11 @@ button:focus-visible {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.7;
+  transition: transform 220ms ease, opacity 180ms ease;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(12deg);
 }
 
 .theme-icon circle {
@@ -265,19 +291,37 @@ button:focus-visible {
 
 .button-pill:hover,
 .contact-pill:hover {
-  border-color: var(--border-strong);
   filter: brightness(1.04);
+}
+
+.primary-pill:hover,
+.primary-contact:hover {
+  border-color: var(--btn-hover-border);
+  background: var(--btn-hover-bg);
+}
+
+.secondary-pill:hover,
+.contact-pill:not(.primary-contact):hover {
+  border-color: var(--btn-hover-border);
+  background: var(--ghost-hover);
+}
+
+.button-pill:active,
+.contact-pill:active {
+  filter: brightness(0.96);
 }
 
 .text-link {
   margin-top: 16px;
   color: var(--text);
   line-height: 1;
+  text-underline-offset: 4px;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
 }
 
 .text-link:hover {
+  color: var(--accent-strong);
   text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
 .portfolio-section {
@@ -330,7 +374,8 @@ button:focus-visible {
   gap: 0;
   min-height: 98px;
   border-bottom: 1px solid var(--border-strong);
-  transition: color 180ms ease, background-color 180ms ease;
+  scroll-margin-top: 80px;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 
 .portfolio-row:last-child {
@@ -339,6 +384,8 @@ button:focus-visible {
 
 .portfolio-row:hover {
   color: var(--accent-strong);
+  border-color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
 }
 
 .row-title {
@@ -347,11 +394,23 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.1;
+  transition: transform 180ms ease;
 }
 
 .row-arrow {
   font-size: 1.75rem;
   line-height: 1;
+  opacity: 0.78;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.portfolio-row:hover .row-title {
+  transform: translateX(6px);
+}
+
+.portfolio-row:hover .row-arrow {
+  opacity: 1;
+  transform: translateX(3px);
 }
 
 .lower-grid {
@@ -380,11 +439,13 @@ button:focus-visible {
   gap: 16px;
   min-height: 65px;
   border-bottom: 1px solid var(--border);
-  transition: color 180ms ease;
+  scroll-margin-top: 80px;
+  transition: color 180ms ease, border-color 180ms ease;
 }
 
 .credential-row:hover {
   color: var(--accent-strong);
+  border-color: var(--accent-strong);
 }
 
 .credential-row strong,
@@ -417,6 +478,12 @@ button:focus-visible {
   color: var(--text);
   font-size: 0.6rem;
   letter-spacing: 0.12em;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.credential-row:hover .pdf-pill {
+  border-color: var(--btn-hover-border);
+  background: var(--ghost-hover);
 }
 
 .download-icon {
@@ -437,6 +504,7 @@ button:focus-visible {
 
 .contact-pill {
   min-height: 60px;
+  scroll-margin-top: 80px;
 }
 
 .whatsapp-icon {
@@ -465,6 +533,56 @@ button:focus-visible {
 
 .site-footer p {
   margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+@media (hover: none) {
+  .top-link:hover,
+  .text-link:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .theme-toggle:hover {
+    color: inherit;
+  }
+
+  .theme-toggle:hover .theme-icon,
+  .portfolio-row:hover .row-title,
+  .portfolio-row:hover .row-arrow {
+    transform: none;
+  }
+
+  .portfolio-row:hover,
+  .credential-row:hover {
+    color: inherit;
+    border-color: var(--border-strong);
+    background: transparent;
+  }
+
+  .portfolio-row:active,
+  .credential-row:active {
+    color: var(--accent-strong);
+    border-color: var(--accent-strong);
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+  }
+
+  .credential-row:hover .pdf-pill {
+    border-color: var(--border-strong);
+    background: transparent;
+  }
 }
 
 @media (max-width: 820px) {
