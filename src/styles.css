@@ -17,6 +17,8 @@
   --inverse-text: #e3e5e4;
   --btn-hover-bg: #444444;
   --btn-hover-border: rgba(45, 45, 45, 0.35);
+  --disabled-bg: rgba(82, 93, 105, 0.35);
+  --disabled-text: rgba(21, 24, 25, 0.58);
   --ghost-hover: rgba(255, 255, 255, 0.72);
   --motion-fast: 150ms;
   --motion-standard: 200ms;
@@ -48,6 +50,8 @@
   --inverse-text: #151819;
   --btn-hover-bg: #d6d4d1;
   --btn-hover-border: rgba(255, 255, 255, 0.22);
+  --disabled-bg: rgba(242, 244, 244, 0.35);
+  --disabled-text: rgba(240, 239, 236, 0.68);
   --ghost-hover: #202221;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }
@@ -292,8 +296,9 @@ button:focus-visible {
 
 .secondary-pill,
 .contact-pill:not(.primary-contact) {
-  background: var(--surface);
-  color: var(--text);
+  border-color: transparent;
+  background: var(--disabled-bg);
+  color: var(--disabled-text);
 }
 
 .button-pill:hover,
@@ -303,15 +308,16 @@ button:focus-visible {
 
 .primary-pill:hover,
 .primary-contact:hover {
-  border-color: var(--btn-hover-border);
-  background: var(--btn-hover-bg);
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--accent-strong);
 }
 
 .secondary-pill:hover,
 .contact-pill:not(.primary-contact):hover {
-  border-color: transparent;
-  background: var(--accent);
-  color: var(--accent-strong);
+  border-color: var(--inverse);
+  background: var(--inverse);
+  color: var(--inverse-text);
 }
 
 .button-pill:active,
@@ -430,7 +436,6 @@ button:focus-visible {
 
 .portfolio-row:hover {
   color: var(--accent-strong);
-  border-color: var(--accent-strong);
   background: color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
@@ -611,6 +616,34 @@ button:focus-visible {
 
   .theme-toggle:hover {
     color: inherit;
+  }
+
+  .primary-pill:hover,
+  .primary-contact:hover {
+    border-color: var(--inverse);
+    background: var(--inverse);
+    color: var(--inverse-text);
+  }
+
+  .primary-pill:active,
+  .primary-contact:active {
+    border-color: transparent;
+    background: var(--accent);
+    color: var(--accent-strong);
+  }
+
+  .secondary-pill:hover,
+  .contact-pill:not(.primary-contact):hover {
+    border-color: transparent;
+    background: var(--disabled-bg);
+    color: var(--disabled-text);
+  }
+
+  .secondary-pill:active,
+  .contact-pill:not(.primary-contact):active {
+    border-color: var(--inverse);
+    background: var(--inverse);
+    color: var(--inverse-text);
   }
 
   .theme-toggle:hover .theme-icon,
