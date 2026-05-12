@@ -375,6 +375,7 @@ button:focus-visible {
 
 .portfolio-section {
   padding-top: 122px;
+  scroll-margin-top: 80px;
 }
 
 .section-heading {
@@ -469,6 +470,10 @@ button:focus-visible {
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   padding-top: 240px;
+}
+
+.credentials-section {
+  scroll-margin-top: 80px;
 }
 
 .lower-grid .section-heading {

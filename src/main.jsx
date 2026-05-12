@@ -11,39 +11,39 @@ const portfolioLinks = [
   },
   {
     number: '02',
-    label: 'Visual Design',
-    href: 'https://brenda-vega.github.io/brenda-vega-visual-systems/',
-    ariaLabel: 'Open Visual Design portfolio',
-  },
-  {
-    number: '03',
     label: 'UI/UX Design',
     href: 'https://brenda-vega.github.io/-portfolio-Ui-UX/',
     ariaLabel: 'Open UI/UX Design portfolio',
+  },
+  {
+    number: '03',
+    label: 'Visual Design',
+    href: 'https://brenda-vega.github.io/brenda-vega-visual-systems/',
+    ariaLabel: 'Open Visual Design portfolio',
   },
 ];
 
 const credentialLinks = [
   {
-    id: 'design-cv',
-    label: 'Design CV',
-    detail: '2026 · 2PP',
-    href: 'cv/CV_VisualDesigner_BrendaVega_2026.pdf',
-    ariaLabel: 'Open Design CV PDF',
-  },
-  {
     id: 'strategy-cv',
-    label: 'Strategy CV',
+    label: 'Strategy & Marketing CV',
     detail: '2026 · 2PP',
     href: 'cv/CV_Marketing_BrendaVega_2026.pdf',
-    ariaLabel: 'Open Strategy CV PDF',
+    ariaLabel: 'Open Strategy and Marketing CV PDF',
   },
   {
-    id: 'full-bio',
-    label: 'Full Bio',
-    detail: '2026 · 4PP',
+    id: 'uiux-cv',
+    label: 'UI/UX Design CV',
+    detail: '2026 · 2PP',
     href: 'cv/CV_UIUX_BrendaVega_2026.pdf',
-    ariaLabel: 'Open Full Bio PDF',
+    ariaLabel: 'Open UI/UX Design CV PDF',
+  },
+  {
+    id: 'visual-design-cv',
+    label: 'Visual Design CV',
+    detail: '2026 · 2PP',
+    href: 'cv/CV_VisualDesigner_BrendaVega_2026.pdf',
+    ariaLabel: 'Open Visual Design CV PDF',
   },
 ];
 
@@ -104,7 +104,7 @@ function SectionHeading({ id, number, title, meta, editorial = false }) {
 
 function PortfolioList() {
   return (
-    <section className="portfolio-section" aria-labelledby="portfolio-heading">
+    <section id="portfolio" className="portfolio-section" aria-labelledby="portfolio-heading">
       <SectionHeading id="portfolio-heading" number="03" title="Portafolios" meta="3 / 3" editorial />
       <div className="portfolio-list">
         {portfolioLinks.map((link) => (
@@ -112,6 +112,8 @@ function PortfolioList() {
             className="portfolio-row"
             href={link.href}
             aria-label={link.ariaLabel}
+            target="_blank"
+            rel="noopener noreferrer"
             key={link.label}
           >
             <span className="row-number">{link.number}</span>
@@ -129,7 +131,7 @@ function PortfolioList() {
 
 function Credentials() {
   return (
-    <section className="credentials-section" aria-labelledby="credentials-heading">
+    <section id="credentials" className="credentials-section" aria-labelledby="credentials-heading">
       <SectionHeading id="credentials-heading" number="04" title="Credentials" meta="3 PDFs" editorial />
       <div className="credential-list">
         {credentialLinks.map((link) => (
@@ -167,6 +169,8 @@ function Contact() {
           className="contact-pill primary-contact"
           href={whatsappUrl}
           aria-label="Contact Brenda Vega on WhatsApp"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <WhatsAppIcon />
           WhatsApp
@@ -176,6 +180,8 @@ function Contact() {
           className="contact-pill"
           href={linkedinUrl}
           aria-label="Open Brenda Vega LinkedIn profile"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           LinkedIn
         </a>
@@ -208,7 +214,13 @@ function App() {
             brenda.vega
           </a>
           <div className="header-actions">
-            <a className="top-link" href={linkedinUrl} aria-label="Open Brenda Vega LinkedIn profile">
+            <a
+              className="top-link"
+              href={linkedinUrl}
+              aria-label="Open Brenda Vega LinkedIn profile"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               LinkedIn
             </a>
             <button
@@ -241,20 +253,17 @@ function App() {
           </div>
 
           <nav className="hero-actions" aria-label="Primary links">
-            <a href="https://brenda-vega.github.io/portfolio-marketing/" className="button-pill primary-pill">
+            <a href="#portfolio" className="button-pill primary-pill">
               Explore Work
             </a>
-            <a
-              href="cv/CV_VisualDesigner_BrendaVega_2026.pdf"
-              className="button-pill secondary-pill"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="#credentials" className="button-pill secondary-pill">
               Download CV
             </a>
             <a
               href={whatsappUrl}
               className="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Say Hello <span className="text-link-arrow" aria-hidden="true">→</span>
             </a>
