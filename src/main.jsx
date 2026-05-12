@@ -8,18 +8,21 @@ const portfolioLinks = [
     label: 'Strategy & Marketing',
     href: 'https://brenda-vega.github.io/portfolio-marketing/',
     ariaLabel: 'Open Strategy and Marketing portfolio',
+    eventName: 'click_strategy_marketing',
   },
   {
     number: '02',
     label: 'UI/UX Design',
     href: 'https://brenda-vega.github.io/-portfolio-Ui-UX/',
     ariaLabel: 'Open UI/UX Design portfolio',
+    eventName: 'click_uiux',
   },
   {
     number: '03',
     label: 'Visual Design',
     href: 'https://brenda-vega.github.io/brenda-vega-visual-systems/',
     ariaLabel: 'Open Visual Design portfolio',
+    eventName: 'click_visual_design',
   },
 ];
 
@@ -30,6 +33,7 @@ const credentialLinks = [
     detail: '2026 · 2PP',
     href: 'cv/CV_Marketing_BrendaVega_2026.pdf',
     ariaLabel: 'Open Strategy and Marketing CV PDF',
+    eventName: 'click_cv_strategy',
   },
   {
     id: 'uiux-cv',
@@ -37,6 +41,7 @@ const credentialLinks = [
     detail: '2026 · 2PP',
     href: 'cv/CV_UIUX_BrendaVega_2026.pdf',
     ariaLabel: 'Open UI/UX Design CV PDF',
+    eventName: 'click_cv_fullbio',
   },
   {
     id: 'visual-design-cv',
@@ -44,12 +49,19 @@ const credentialLinks = [
     detail: '2026 · 2PP',
     href: 'cv/CV_VisualDesigner_BrendaVega_2026.pdf',
     ariaLabel: 'Open Visual Design CV PDF',
+    eventName: 'click_cv_design',
   },
 ];
 
 const linkedinUrl = 'https://www.linkedin.com/in/brendavega012/';
 const whatsappUrl =
   'https://wa.me/524445492516?text=Hola%20Brenda%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conectar%20contigo.';
+
+function trackEvent(eventName) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', eventName);
+  }
+}
 
 function ThemeIcon({ isDark }) {
   return (
@@ -114,6 +126,7 @@ function PortfolioList() {
             aria-label={link.ariaLabel}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent(link.eventName)}
             key={link.label}
           >
             <span className="row-number">{link.number}</span>
@@ -142,6 +155,7 @@ function Credentials() {
             aria-label={link.ariaLabel}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent(link.eventName)}
             key={link.label}
           >
             <span>
@@ -171,6 +185,7 @@ function Contact() {
           aria-label="Contact Brenda Vega on WhatsApp"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent('click_whatsapp')}
         >
           <WhatsAppIcon />
           WhatsApp
@@ -182,6 +197,7 @@ function Contact() {
           aria-label="Open Brenda Vega LinkedIn profile"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent('click_linkedin')}
         >
           LinkedIn
         </a>
@@ -220,6 +236,7 @@ function App() {
               aria-label="Open Brenda Vega LinkedIn profile"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('click_linkedin')}
             >
               LinkedIn
             </a>
@@ -264,6 +281,7 @@ function App() {
               className="text-link"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('click_whatsapp')}
             >
               Say Hello <span className="text-link-arrow" aria-hidden="true">→</span>
             </a>
