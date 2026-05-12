@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --prim-rose-100:#f9cccb;
+  --prim-rose-600:#c97f7d;
+}
+
+[data-theme="light"]{
+  --bg:#e3e5e4;
+  --surface:rgba(255,255,255,0.45);
+  --surface2:rgba(255,255,255,0.72);
+  --text:#2d2d2d;
+  --text2:#525d69;
+  --text3:rgba(82,93,105,0.45);
+  --accent:#f9cccb;
+  --accent-dark:#c97f7d;
+  --border:rgba(45,45,45,0.1);
+  --border2:rgba(45,45,45,0.18);
+  --btn-hover-bg:#444444;
+  --btn-hover-border:rgba(45,45,45,0.35);
+}
+
+[data-theme="dark"]{
+  --bg:#111212;
+  --surface:#1b1c1c;
+  --surface2:#232524;
+  --text:#e8e6e3;
+  --text2:#8a8f8c;
+  --text3:rgba(138,143,140,0.45);
+  --accent:#c97f7d;
+  --accent-dark:#f9cccb;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --btn-hover-bg:#d6d4d1;
+  --btn-hover-border:rgba(255,255,255,0.22);
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  padding:32px 24px;
+  max-width:780px;
+  margin:0 auto;
+  transition:background 0.3s,color 0.3s;
+}
+
+/* HEADER */
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px}
+.header h1{font-family:'Poppins',sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.02em}
+.header p{font-size:11px;color:var(--text2);margin-top:3px;font-family:'Inter',sans-serif}
+
+/* TOGGLE */
+.toggle-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 14px;
+  font-family:'Inter',sans-serif;
+  font-size:12px;font-weight:500;
+  border-radius:9999px;
+  border:0.5px solid var(--border2);
+  background:var(--surface2);
+  color:var(--text2);
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.toggle-btn:hover{color:var(--text)}
+
+/* SECTIONS */
+.section{margin-bottom:36px}
+.sec-label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--accent-dark);
+  margin-bottom:16px;
+  padding-bottom:7px;
+  border-bottom:0.5px solid var(--border2);
+}
+
+/* COLORS */
+.color-row{display:flex;gap:8px;flex-wrap:wrap}
+.swatch-group{display:flex;flex-direction:column;gap:5px;flex:1;min-width:80px}
+.swatch{height:48px;border-radius:8px;border:0.5px solid var(--border2);transition:background 0.3s}
+.sw-label{font-family:'Inter',sans-serif;font-size:10px;color:var(--text2)}
+.sw-hex{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:var(--text)}
+
+/* TYPOGRAPHY */
+.type-stack{display:flex;flex-direction:column;gap:8px}
+.type-row{
+  display:flex;align-items:center;gap:20px;
+  padding:11px 16px;
+  background:var(--surface);
+  border:0.5px solid var(--border);
+  border-radius:10px;
+  transition:background 0.3s;
+}
+.type-meta{min-width:160px;font-family:'Inter',sans-serif;font-size:10px;color:var(--text2);line-height:1.6}
+.type-meta strong{display:block;font-size:10.5px;color:var(--text);font-weight:500}
+
+/* BUTTONS */
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.btn-col{display:flex;flex-direction:column;align-items:center;gap:6px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 22px;
+  font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:500;
+  border-radius:9999px;
+  border:0.5px solid transparent;
+  cursor:pointer;
+  letter-spacing:0.01em;
+  transition:background 200ms ease, border-color 200ms ease, filter 200ms ease;
+}
+/* Primary: brightness + border shift on hover — no transform */
+.btn-p{
+  background:var(--text);
+  color:var(--bg);
+  border-color:transparent;
+}
+.btn-p:hover{
+  background:var(--btn-hover-bg);
+  border-color:var(--btn-hover-border);
+  filter:brightness(1.06);
+}
+.btn-g{
+  background:var(--surface2);
+  color:var(--text2);
+  border:0.5px solid var(--border2);
+}
+.btn-g:hover{color:var(--text);background:var(--surface)}
+.btn-a{background:var(--accent);color:var(--accent-dark);border-color:transparent}
+.btn-a:hover{filter:brightness(0.96)}
+.btn-sm{padding:6px 16px;font-size:12px}
+.btn-meta{font-family:'Inter',sans-serif;font-size:10px;color:var(--text2)}
+
+/* LABELS */
+.label-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.lbl-chip{
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--accent-dark);
+  background:rgba(201,127,125,0.1);
+  padding:3px 10px;border-radius:9999px;
+  border:0.5px solid rgba(201,127,125,0.2);
+}
+.lbl-plain{
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--text2);
+}
+
+/* LINKS */
+.link-demo{font-family:'Inter',sans-serif;font-size:14px;color:var(--text);line-height:2}
+a.editorial{
+  color:var(--text);
+  text-decoration:underline;
+  text-decoration-color:var(--accent-dark);
+  text-underline-offset:3px;
+  text-decoration-thickness:1px;
+  transition:text-decoration-color 0.2s;
+}
+a.editorial:hover{text-decoration-color:var(--text)}
+.link-meta{margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;color:var(--text2)}
+
+/* SPACING */
+.space-row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.space-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+.space-block{background:var(--accent);border-radius:3px;width:28px;transition:background 0.3s}
+.space-val{font-family:'Inter',sans-serif;font-size:10px;color:var(--accent-dark);font-weight:500}
+.space-name{font-family:'Inter',sans-serif;font-size:10px;color:var(--text2)}
+.space-meta{margin-top:10px;font-family:'Inter',sans-serif;font-size:11px;color:var(--text2)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Mini Style Tile</h1>
+    <p>Brenda Vega Portfolio · v3.0 · Inter + Poppins + Instrument Serif</p>
+  </div>
+  <button class="toggle-btn" onclick="toggleTheme()">
+    <span id="theme-icon">🌙</span>
+    <span id="theme-label">Dark</span>
+  </button>
+</div>
+
+<!-- 1. COLORS -->
+<div class="section">
+  <div class="sec-label">Colores</div>
+  <div class="color-row">
+    <div class="swatch-group">
+      <div class="swatch" style="background:var(--text)"></div>
+      <div class="sw-label">Text primary</div>
+      <div class="sw-hex" id="c1">#2D2D2D</div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch" style="background:var(--text2)"></div>
+      <div class="sw-label">Muted</div>
+      <div class="sw-hex" id="c2">#525D69</div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch" style="background:var(--accent)"></div>
+      <div class="sw-label">Accent</div>
+      <div class="sw-hex" id="c3">#F9CCCB</div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch" style="background:var(--accent-dark)"></div>
+      <div class="sw-label">Accent dark</div>
+      <div class="sw-hex" id="c4">#C97F7D</div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch" style="background:var(--bg);border:0.5px solid var(--border2)"></div>
+      <div class="sw-label">Background</div>
+      <div class="sw-hex" id="c5">#E3E5E4</div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch" style="background:var(--surface);border:0.5px solid var(--border2)"></div>
+      <div class="sw-label">Surface</div>
+      <div class="sw-hex" id="c6">white 45%</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. TYPOGRAPHY -->
+<div class="section">
+  <div class="sec-label">Tipografías</div>
+  <div class="type-stack">
+
+    <div class="type-row">
+      <div class="type-meta">
+        <strong>Editorial Accent</strong>
+        Instrument Serif Italic · 44px · lh 1.08
+      </div>
+      <div style="font-family:'Instrument Serif',serif;font-size:38px;font-style:italic;color:var(--text);line-height:1.08">Brenda Vega</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <strong>Heading 1</strong>
+        Poppins 600 · 32px · ls -0.02em · lh 1.2
+      </div>
+      <div style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;color:var(--text)">Sección principal</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <strong>Heading 2</strong>
+        Poppins 500 · 24px · ls -0.02em
+      </div>
+      <div style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:500;letter-spacing:-0.02em;color:var(--text)">Nombre del proyecto</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <strong>Body</strong>
+        Inter 400 · 15px · lh 1.75
+      </div>
+      <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:var(--text2);line-height:1.75">Texto descriptivo para casos de estudio y contenido del portafolio.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <strong>Label / UI</strong>
+        Inter 500 · 11px · ls 0.12em · uppercase
+      </div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-dark)">LABEL UPPERCASE</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 3. BUTTONS -->
+<div class="section">
+  <div class="sec-label">Botones</div>
+  <div class="btn-row">
+    <div class="btn-col">
+      <button class="btn btn-p">Primary</button>
+      <span class="btn-meta">h 40px · hover: brightness + border</span>
+    </div>
+    <div class="btn-col">
+      <button class="btn btn-g">Ghost</button>
+      <span class="btn-meta">secondary</span>
+    </div>
+    <div class="btn-col">
+      <button class="btn btn-a">Accent</button>
+      <span class="btn-meta">soft cta</span>
+    </div>
+    <div class="btn-col">
+      <button class="btn btn-p btn-sm">Small</button>
+      <span class="btn-meta">h 32px</span>
+    </div>
+    <div class="btn-col">
+      <button class="btn btn-p" style="opacity:0.35;cursor:not-allowed">Disabled</button>
+      <span class="btn-meta">opacity 35%</span>
+    </div>
+  </div>
+</div>
+
+<!-- 4. LABELS -->
+<div class="section">
+  <div class="sec-label">Labels</div>
+  <div class="label-row">
+    <span class="lbl-chip">Case Study</span>
+    <span class="lbl-chip">2024</span>
+    <span class="lbl-chip">Web3</span>
+    <span class="lbl-chip">Product Strategy</span>
+    <span class="lbl-plain">UI Design</span>
+    <span class="lbl-plain">Fintech</span>
+  </div>
+  <div style="margin-top:10px;font-family:'Inter',sans-serif;font-size:11px;color:var(--text2)">Inter 500 · 10.5px · ls 0.12em · uppercase · pill 9999px</div>
+</div>
+
+<!-- 5. LINKS -->
+<div class="section">
+  <div class="sec-label">Links</div>
+  <div class="link-demo">
+    Diseñé el sistema visual completo para <a class="editorial" href="#">Fidex Capital</a>, incluyendo
+    tokens, componentes y documentación de <a class="editorial" href="#">design system</a>.
+  </div>
+  <div class="link-meta">Underline offset 3px · thickness 1px · color accent-dark → text on hover · sin flecha</div>
+</div>
+
+<!-- 6. SPACING -->
+<div class="section">
+  <div class="sec-label">Spacing</div>
+  <div class="space-row">
+    <div class="space-item"><div class="space-block" style="height:4px"></div><div class="space-val">4px</div><div class="space-name">xs</div></div>
+    <div class="space-item"><div class="space-block" style="height:8px"></div><div class="space-val">8px</div><div class="space-name">sm</div></div>
+    <div class="space-item"><div class="space-block" style="height:12px"></div><div class="space-val">12px</div><div class="space-name">md</div></div>
+    <div class="space-item"><div class="space-block" style="height:16px"></div><div class="space-val">16px</div><div class="space-name">lg</div></div>
+    <div class="space-item"><div class="space-block" style="height:24px"></div><div class="space-val">24px</div><div class="space-name">xl</div></div>
+    <div class="space-item"><div class="space-block" style="height:32px"></div><div class="space-val">32px</div><div class="space-name">2xl</div></div>
+    <div class="space-item"><div class="space-block" style="height:48px"></div><div class="space-val">48px</div><div class="space-name">3xl</div></div>
+    <div class="space-item"><div class="space-block" style="height:64px"></div><div class="space-val">64px</div><div class="space-name">4xl</div></div>
+  </div>
+  <div class="space-meta">Base 8px · múltiplos de 4 · max-width contenido 760px</div>
+</div>
+
+<script>
+const darkTokens={c1:'#E8E6E3',c2:'#8A8F8C',c3:'#C97F7D',c4:'#F9CCCB',c5:'#111212',c6:'#1B1C1C'};
+const lightTokens={c1:'#2D2D2D',c2:'#525D69',c3:'#F9CCCB',c4:'#C97F7D',c5:'#E3E5E4',c6:'rgba(255,255,255,45%)'};
+function toggleTheme(){
+  const html=document.documentElement;
+  const isDark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',isDark?'light':'dark');
+  document.getElementById('theme-icon').textContent=isDark?'🌙':'☀️';
+  document.getElementById('theme-label').textContent=isDark?'Dark':'Light';
+  const t=isDark?lightTokens:darkTokens;
+  Object.keys(t).forEach(k=>{const el=document.getElementById(k);if(el)el.textContent=t[k];});
+}
+</script>
+</body>
+</html>
