@@ -25,24 +25,31 @@ const portfolioLinks = [
 
 const credentialLinks = [
   {
+    id: 'design-cv',
     label: 'Design CV',
     detail: '2026 · 2PP',
-    href: '#design-cv',
+    href: 'cv/CV_VisualDesigner_BrendaVega_2026.pdf',
     ariaLabel: 'Open Design CV PDF',
   },
   {
+    id: 'strategy-cv',
     label: 'Strategy CV',
     detail: '2026 · 2PP',
-    href: '#strategy-cv',
+    href: 'cv/CV_Marketing_BrendaVega_2026.pdf',
     ariaLabel: 'Open Strategy CV PDF',
   },
   {
+    id: 'full-bio',
     label: 'Full Bio',
     detail: '2026 · 4PP',
-    href: '#full-bio',
+    href: 'cv/CV_UIUX_BrendaVega_2026.pdf',
     ariaLabel: 'Open Full Bio PDF',
   },
 ];
+
+const linkedinUrl = 'https://www.linkedin.com/in/brendavega012/';
+const whatsappUrl =
+  'https://wa.me/524445492516?text=Hola%20Brenda%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conectar%20contigo.';
 
 function ThemeIcon({ isDark }) {
   return (
@@ -127,10 +134,12 @@ function Credentials() {
       <div className="credential-list">
         {credentialLinks.map((link) => (
           <a
-            id={link.href.slice(1)}
+            id={link.id}
             className="credential-row"
             href={link.href}
             aria-label={link.ariaLabel}
+            target="_blank"
+            rel="noopener noreferrer"
             key={link.label}
           >
             <span>
@@ -149,9 +158,6 @@ function Credentials() {
 }
 
 function Contact() {
-  const whatsappUrl =
-    'https://wa.me/524445492516?text=Hola%20Brenda%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conectar%20contigo.';
-
   return (
     <section className="contact-section" aria-labelledby="contact-heading">
       <SectionHeading id="contact-heading" number="05" title="Get in touch" editorial />
@@ -165,7 +171,12 @@ function Contact() {
           <WhatsAppIcon />
           WhatsApp
         </a>
-        <a id="linkedin" className="contact-pill" href="#linkedin" aria-label="Open Brenda Vega LinkedIn profile">
+        <a
+          id="linkedin"
+          className="contact-pill"
+          href={linkedinUrl}
+          aria-label="Open Brenda Vega LinkedIn profile"
+        >
           LinkedIn
         </a>
       </div>
@@ -197,7 +208,7 @@ function App() {
             brenda.vega
           </a>
           <div className="header-actions">
-            <a className="top-link" href="#linkedin" aria-label="Open Brenda Vega LinkedIn profile">
+            <a className="top-link" href={linkedinUrl} aria-label="Open Brenda Vega LinkedIn profile">
               LinkedIn
             </a>
             <button
@@ -233,11 +244,16 @@ function App() {
             <a href="https://brenda-vega.github.io/portfolio-marketing/" className="button-pill primary-pill">
               Explore Work
             </a>
-            <a href="#design-cv" className="button-pill secondary-pill">
+            <a
+              href="cv/CV_VisualDesigner_BrendaVega_2026.pdf"
+              className="button-pill secondary-pill"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Download CV
             </a>
             <a
-              href="https://wa.me/524445492516?text=Hola%20Brenda%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conectar%20contigo."
+              href={whatsappUrl}
               className="text-link"
             >
               Say Hello <span className="text-link-arrow" aria-hidden="true">→</span>
