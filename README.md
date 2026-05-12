@@ -1,49 +1,117 @@
 # brenda.vega Portfolio Link Hub
 
-Responsive static portfolio link hub built with Vite + React and plain CSS.
+Responsive static portfolio hub built with Vite, React and plain CSS.
 
-## Run locally
+## Local Development
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Start the local dev server:
+
+```bash
 npm run dev
 ```
 
-## Build for production
+The project usually runs at:
+
+```text
+http://127.0.0.1:5173/
+```
+
+## Production Build
+
+Create a production build:
 
 ```bash
 npm run build
 ```
 
-Preview the production build:
+The generated site is created in:
+
+```text
+dist/
+```
+
+Preview the production build locally:
 
 ```bash
 npm run preview
 ```
 
-## Replace links
+## Project Structure
 
-Edit the placeholder `href` values in `src/main.jsx`.
+```text
+public/
+  cv/
+    CV_Marketing_BrendaVega_2026.pdf
+    CV_UIUX_BrendaVega_2026.pdf
+    CV_VisualDesigner_BrendaVega_2026.pdf
+src/
+  main.jsx
+  styles.css
+design.md
+vercel.json
+vite.config.js
+```
 
-- Portfolio links are in `portfolioLinks`
-- CV and bio links are in `credentialLinks`
-- Contact links are in `contactLinks`
-- Main hero buttons are in the `hero-actions` navigation
+## Links And PDFs
 
-Replace values like `#strategy-marketing` with final URLs or file paths.
+Main links are managed in `src/main.jsx`.
 
-## Deploy
+- Portfolio links: `portfolioLinks`
+- CV download links: `credentialLinks`
+- LinkedIn URL: `linkedinUrl`
+- WhatsApp URL: `whatsappUrl`
 
-### Vercel
+PDF files should stay inside:
 
-1. Push this folder to a GitHub repository.
+```text
+public/cv/
+```
+
+Vite copies everything in `public/` into `dist/` during build, so PDF links such as `cv/CV_Marketing_BrendaVega_2026.pdf` work in production.
+
+## Deploy To Vercel
+
+1. Push the repository to GitHub.
 2. Import the repository in Vercel.
-3. Use the default Vite settings:
-   - Build command: `npm run build`
-   - Output directory: `dist`
+3. Use the Vite framework preset.
+4. Confirm these settings:
 
-### GitHub Pages
+```text
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
+```
+
+The included `vercel.json` keeps routing stable by sending app routes back to `index.html`. Static files in `public/`, including PDFs, remain available from their normal paths.
+
+## Optional GitHub Pages Deployment
+
+The project is configured with a relative Vite base path:
+
+```js
+base: './'
+```
+
+This keeps built assets compatible with GitHub Pages repository hosting.
+
+To deploy manually:
 
 1. Run `npm run build`.
-2. Deploy the generated `dist` folder using your preferred GitHub Pages workflow.
-3. If deploying under a repository subpath, set the Vite `base` option in `vite.config.js`.
+2. Publish the contents of `dist/` to the `gh-pages` branch.
+3. In GitHub, set Pages source to `gh-pages` and folder to `/root`.
+
+## Design System
+
+The approved visual system is documented in:
+
+```text
+design.md
+```
+
+Keep layout, typography, spacing and interaction behavior aligned with that file when making future refinements.
