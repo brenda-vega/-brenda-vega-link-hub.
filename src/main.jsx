@@ -235,7 +235,7 @@ function App() {
               Download CV
             </a>
             <a href="#whatsapp" className="text-link">
-              Say Hello <span aria-hidden="true">→</span>
+              Say Hello <span className="text-link-arrow" aria-hidden="true">→</span>
             </a>
           </nav>
         </section>

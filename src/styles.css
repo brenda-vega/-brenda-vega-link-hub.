@@ -18,6 +18,9 @@
   --btn-hover-bg: #444444;
   --btn-hover-border: rgba(45, 45, 45, 0.35);
   --ghost-hover: rgba(255, 255, 255, 0.72);
+  --motion-fast: 150ms;
+  --motion-standard: 200ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
   --shadow: 0 22px 60px rgba(24, 28, 30, 0.04);
   background: var(--bg);
   color: var(--text);
@@ -65,7 +68,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  transition: background-color 220ms ease, color 220ms ease;
+  transition: background-color var(--motion-standard) var(--motion-ease), color var(--motion-standard) var(--motion-ease);
 }
 
 body,
@@ -146,7 +149,7 @@ button:focus-visible {
 .top-link {
   color: var(--text);
   text-underline-offset: 4px;
-  transition: color 180ms ease, text-decoration-color 180ms ease;
+  transition: color var(--motion-fast) var(--motion-ease), text-decoration-color var(--motion-fast) var(--motion-ease);
 }
 
 .top-link:hover {
@@ -164,7 +167,7 @@ button:focus-visible {
   border: 0;
   background: transparent;
   cursor: pointer;
-  transition: color 180ms ease, transform 180ms ease;
+  transition: color var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
 }
 
 .theme-toggle:hover {
@@ -179,7 +182,7 @@ button:focus-visible {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.7;
-  transition: transform 220ms ease, opacity 180ms ease;
+  transition: transform var(--motion-standard) var(--motion-ease), opacity var(--motion-fast) var(--motion-ease);
 }
 
 .theme-toggle:hover .theme-icon {
@@ -273,7 +276,11 @@ button:focus-visible {
   min-height: 43px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
-  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, filter 180ms ease;
+  transition:
+    background-color var(--motion-fast) var(--motion-ease),
+    border-color var(--motion-fast) var(--motion-ease),
+    color var(--motion-fast) var(--motion-ease),
+    filter var(--motion-fast) var(--motion-ease);
 }
 
 .primary-pill,
@@ -312,16 +319,34 @@ button:focus-visible {
 }
 
 .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   margin-top: 16px;
   color: var(--text);
   line-height: 1;
   text-underline-offset: 4px;
-  transition: color 180ms ease, text-decoration-color 180ms ease;
+  transition: color var(--motion-fast) var(--motion-ease), text-decoration-color var(--motion-fast) var(--motion-ease);
 }
 
 .text-link:hover {
   color: var(--accent-strong);
   text-decoration: underline;
+}
+
+.text-link-arrow {
+  display: inline-block;
+  line-height: 1;
+  transition: transform var(--motion-fast) var(--motion-ease), opacity var(--motion-fast) var(--motion-ease);
+}
+
+.text-link:hover .text-link-arrow {
+  transform: translateX(4px);
+}
+
+.text-link:active .text-link-arrow {
+  transform: translateX(2px);
+  opacity: 0.72;
 }
 
 .portfolio-section {
@@ -375,7 +400,10 @@ button:focus-visible {
   min-height: 98px;
   border-bottom: 1px solid var(--border-strong);
   scroll-margin-top: 80px;
-  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  transition:
+    color var(--motion-fast) var(--motion-ease),
+    background-color var(--motion-fast) var(--motion-ease),
+    border-color var(--motion-fast) var(--motion-ease);
 }
 
 .portfolio-row:last-child {
@@ -394,14 +422,14 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.1;
-  transition: transform 180ms ease;
+  transition: transform var(--motion-fast) var(--motion-ease);
 }
 
 .row-arrow {
   font-size: 1.75rem;
   line-height: 1;
   opacity: 0.78;
-  transition: opacity 180ms ease, transform 180ms ease;
+  transition: opacity var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
 }
 
 .portfolio-row:hover .row-title {
@@ -440,7 +468,7 @@ button:focus-visible {
   min-height: 65px;
   border-bottom: 1px solid var(--border);
   scroll-margin-top: 80px;
-  transition: color 180ms ease, border-color 180ms ease;
+  transition: color var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease);
 }
 
 .credential-row:hover {
@@ -478,7 +506,10 @@ button:focus-visible {
   color: var(--text);
   font-size: 0.6rem;
   letter-spacing: 0.12em;
-  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+  transition:
+    background-color var(--motion-fast) var(--motion-ease),
+    border-color var(--motion-fast) var(--motion-ease),
+    color var(--motion-fast) var(--motion-ease);
 }
 
 .credential-row:hover .pdf-pill {
@@ -560,6 +591,7 @@ button:focus-visible {
   }
 
   .theme-toggle:hover .theme-icon,
+  .text-link:hover .text-link-arrow,
   .portfolio-row:hover .row-title,
   .portfolio-row:hover .row-arrow {
     transform: none;
@@ -580,8 +612,15 @@ button:focus-visible {
   }
 
   .credential-row:hover .pdf-pill {
-    border-color: var(--border-strong);
-    background: transparent;
+    border-color: transparent;
+    background: var(--inverse);
+    color: var(--inverse-text);
+  }
+
+  .credential-row:active .pdf-pill {
+    border-color: var(--btn-hover-border);
+    background: var(--inverse);
+    color: var(--inverse-text);
   }
 }
 
