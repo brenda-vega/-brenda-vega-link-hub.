@@ -404,6 +404,7 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 4px;
   min-width: 56px;
   height: 23px;
   border: 1px solid var(--border-strong);
@@ -411,6 +412,16 @@ button:focus-visible {
   color: var(--text);
   font-size: 0.6rem;
   letter-spacing: 0.12em;
+}
+
+.download-icon {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.45;
 }
 
 .contact-list {
@@ -423,9 +434,15 @@ button:focus-visible {
   min-height: 60px;
 }
 
-.whatsapp-mark {
+.whatsapp-icon {
+  width: 15px;
+  height: 15px;
   margin-right: 8px;
-  font-size: 0.75rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.55;
 }
 
 .site-footer {
