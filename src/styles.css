@@ -296,9 +296,9 @@ button:focus-visible {
 
 .secondary-pill,
 .contact-pill:not(.primary-contact) {
-  border-color: transparent;
-  background: var(--disabled-bg);
-  color: var(--disabled-text);
+  border-color: var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
 }
 
 .button-pill:hover,
@@ -315,9 +315,9 @@ button:focus-visible {
 
 .secondary-pill:hover,
 .contact-pill:not(.primary-contact):hover {
-  border-color: var(--inverse);
-  background: var(--inverse);
-  color: var(--inverse-text);
+  border-color: var(--btn-hover-border);
+  background: var(--ghost-hover);
+  color: var(--text);
 }
 
 .button-pill:active,
@@ -634,16 +634,16 @@ button:focus-visible {
 
   .secondary-pill:hover,
   .contact-pill:not(.primary-contact):hover {
-    border-color: transparent;
-    background: var(--disabled-bg);
-    color: var(--disabled-text);
+    border-color: var(--border-strong);
+    background: var(--surface);
+    color: var(--text);
   }
 
   .secondary-pill:active,
   .contact-pill:not(.primary-contact):active {
-    border-color: var(--inverse);
-    background: var(--inverse);
-    color: var(--inverse-text);
+    border-color: var(--btn-hover-border);
+    background: var(--ghost-hover);
+    color: var(--text);
   }
 
   .theme-toggle:hover .theme-icon,
