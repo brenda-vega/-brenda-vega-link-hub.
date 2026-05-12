@@ -6,19 +6,19 @@ const portfolioLinks = [
   {
     number: '01',
     label: 'Strategy & Marketing',
-    href: '#strategy-marketing',
+    href: 'https://brenda-vega.github.io/portfolio-marketing/',
     ariaLabel: 'Open Strategy and Marketing portfolio',
   },
   {
     number: '02',
     label: 'Visual Design',
-    href: '#visual-design',
+    href: 'https://brenda-vega.github.io/brenda-vega-visual-systems/',
     ariaLabel: 'Open Visual Design portfolio',
   },
   {
     number: '03',
     label: 'UI/UX Design',
-    href: '#ui-ux-design',
+    href: 'https://brenda-vega.github.io/-portfolio-Ui-UX/',
     ariaLabel: 'Open UI/UX Design portfolio',
   },
 ];
@@ -102,7 +102,6 @@ function PortfolioList() {
       <div className="portfolio-list">
         {portfolioLinks.map((link) => (
           <a
-            id={link.href.slice(1)}
             className="portfolio-row"
             href={link.href}
             aria-label={link.ariaLabel}
@@ -150,6 +149,9 @@ function Credentials() {
 }
 
 function Contact() {
+  const whatsappUrl =
+    'https://wa.me/524445492516?text=Hola%20Brenda%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conectar%20contigo.';
+
   return (
     <section className="contact-section" aria-labelledby="contact-heading">
       <SectionHeading id="contact-heading" number="05" title="Get in touch" editorial />
@@ -157,7 +159,7 @@ function Contact() {
         <a
           id="whatsapp"
           className="contact-pill primary-contact"
-          href="#whatsapp"
+          href={whatsappUrl}
           aria-label="Contact Brenda Vega on WhatsApp"
         >
           <WhatsAppIcon />
@@ -228,13 +230,16 @@ function App() {
           </div>
 
           <nav className="hero-actions" aria-label="Primary links">
-            <a href="#strategy-marketing" className="button-pill primary-pill">
+            <a href="https://brenda-vega.github.io/portfolio-marketing/" className="button-pill primary-pill">
               Explore Work
             </a>
             <a href="#design-cv" className="button-pill secondary-pill">
               Download CV
             </a>
-            <a href="#whatsapp" className="text-link">
+            <a
+              href="https://wa.me/524445492516?text=Hola%20Brenda%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conectar%20contigo."
+              className="text-link"
+            >
               Say Hello <span className="text-link-arrow" aria-hidden="true">→</span>
             </a>
           </nav>
