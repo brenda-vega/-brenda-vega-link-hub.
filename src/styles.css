@@ -309,8 +309,9 @@ button:focus-visible {
 
 .secondary-pill:hover,
 .contact-pill:not(.primary-contact):hover {
-  border-color: var(--btn-hover-border);
-  background: var(--ghost-hover);
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--accent-strong);
 }
 
 .button-pill:active,
@@ -430,7 +431,7 @@ button:focus-visible {
 .portfolio-row:hover {
   color: var(--accent-strong);
   border-color: var(--accent-strong);
-  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
 .row-title {
@@ -485,12 +486,16 @@ button:focus-visible {
   min-height: 65px;
   border-bottom: 1px solid var(--border);
   scroll-margin-top: 80px;
-  transition: color var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease);
+  transition:
+    color var(--motion-fast) var(--motion-ease),
+    background-color var(--motion-fast) var(--motion-ease),
+    border-color var(--motion-fast) var(--motion-ease);
 }
 
 .credential-row:hover {
   color: var(--accent-strong);
   border-color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .credential-row strong,
@@ -520,6 +525,7 @@ button:focus-visible {
   height: 23px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
+  background: var(--surface);
   color: var(--text);
   font-size: 0.6rem;
   letter-spacing: 0.12em;
@@ -530,8 +536,9 @@ button:focus-visible {
 }
 
 .credential-row:hover .pdf-pill {
-  border-color: var(--btn-hover-border);
-  background: var(--ghost-hover);
+  border-color: var(--inverse);
+  background: var(--inverse);
+  color: var(--inverse-text);
 }
 
 .download-icon {
@@ -628,13 +635,13 @@ button:focus-visible {
   }
 
   .credential-row:hover .pdf-pill {
-    border-color: transparent;
-    background: var(--inverse);
-    color: var(--inverse-text);
+    border-color: var(--border-strong);
+    background: var(--surface);
+    color: var(--text);
   }
 
   .credential-row:active .pdf-pill {
-    border-color: var(--btn-hover-border);
+    border-color: var(--inverse);
     background: var(--inverse);
     color: var(--inverse-text);
   }
@@ -810,9 +817,9 @@ button:focus-visible {
   .pdf-pill {
     min-width: 55px;
     height: 24px;
-    border-color: transparent;
-    background: var(--inverse);
-    color: var(--inverse-text);
+    border-color: var(--border-strong);
+    background: var(--surface);
+    color: var(--text);
   }
 
   .contact-list {
