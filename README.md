@@ -47,9 +47,9 @@ npm run preview
 ```text
 public/
   cv/
-    CV_Marketing_BrendaVega_2026.pdf
-    CV_UIUX_BrendaVega_2026.pdf
-    CV_VisualDesigner_BrendaVega_2026.pdf
+    CV_Marketing_BrendaVega_2026_v2.pdf
+    CV_UIUX_BrendaVega_2026_v2.pdf
+    CV_VisualDesigner_BrendaVega_2026_v2.pdf
 src/
   main.jsx
   styles.css
@@ -73,7 +73,7 @@ PDF files should stay inside:
 public/cv/
 ```
 
-Vite copies everything in `public/` into `dist/` during build, so PDF links such as `cv/CV_Marketing_BrendaVega_2026.pdf` work in production.
+Vite copies everything in `public/` into `dist/` during build, so PDF links such as `cv/CV_Marketing_BrendaVega_2026_v2.pdf` work in production.
 
 ## Deploy To Vercel
 
